@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'talentio'
+require 'talentio/cli'
+
+Talentio::CLI.start(ARGV)

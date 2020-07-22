@@ -39,6 +39,8 @@ talentioのAPIキーを指定してください。
 インタビュー通知のcron間隔に合わせて秒で指定してください。デフォルトで600(10分)です。
 - TELENTIO_SLACK_CHANNEL
 トークで通知したことを通知するチャンネル指定です。デフォルトは `#recruiting` です。
+- TALENTIO_TEST
+何かしらの値を設定するとSlack通知を行わずに、標準出力を行います。動作確認したいときにご利用ください。
 
 ## Contributing
 

@@ -5,4 +5,3 @@ build:
 push: build
 	docker tag talentio-notifier  pyama/talentio-notifier:$(VERSION)
 	docker push pyama/talentio-notifier:$(VERSION)
-	sed -i 's/talentio-notifier:*/talentio-notifier:$(VERSION)/g' manifests/cron.yml

@@ -3,6 +3,7 @@ require 'talentio/client'
 require 'talentio/notifier/slack'
 require 'talentio/notifier/slack/interview'
 require 'talentio/notifier/slack/selection_result'
+require 'uri'
 
 module Talentio
   class << self
@@ -11,7 +12,7 @@ module Talentio
         # まだステージが割り当てられていない
         next if c['stages'].empty?
         # 役員面接とかスキップしたい場合
-        next if ENV['TALENTIO_SKIP_STAGE'] && c['stages'].size > ENV['TALENTIO_SKIP_STAGE']
+        next if ENV['TALENTIO_SKIP_STAGE'] && c['stages'].size > ENV['TALENTIO_SKIP_STAGE'].to_i
 
         candidate = client.candidates(c['id'])
 
@@ -25,9 +26,13 @@ module Talentio
           evaluations: s['evaluations'],
           scheduled_at: s['scheduledAt'],
           requisition_name: c['requisition']['name'],
-          candidate_url: "https://talentio.com/ats/candidate/#{c['id']}"
+          candidate_url: URI.join(url, "ats/candidate/#{c['id']}").to_s
         }
       end.flatten.compact
+    end
+
+    def url
+      ENV['TALENTIO_URL'] || "https://talentio.com"
     end
 
     private

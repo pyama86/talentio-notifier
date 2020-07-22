@@ -1,4 +1,5 @@
 require 'faraday'
+require 'uri'
 module Talentio
   class Client
     def candidates(id=nil)
@@ -14,7 +15,7 @@ module Talentio
 
     private
     def client
-      @_client ||= ::Faraday.new(:url => ENV['TALENTIO_API_ENDPOINT'] || "https://talentio.com/api/v1/") do |b|
+      @_client ||= ::Faraday.new(:url => URI.join(::Talentio.url, "/api/v1/").to_s) do |b|
         b.headers['Authorization'] = "Bearer #{ENV['TALENTIO_APIKEY']}"
         b.adapter Faraday.default_adapter
       end

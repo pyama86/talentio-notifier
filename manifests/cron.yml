@@ -1,0 +1,69 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: talentio-notifier-result
+spec:
+  schedule: "0 11,15 * * 1-5"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: talentio-notifier
+            image: pyama/talentio-notifier:0.0.1
+            env:
+            - name: LANG
+              value: C.UTF-8
+            - name: TALENTIO_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: talentio-notifier-secret
+                  key: talentio-apikey
+            - name: LANG
+              value: C.UTF-8
+            - name: SLACK_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: talentio-notifier-secret
+                  key: slack-apikey
+            args:
+            - "/bin/bash"
+            - "-c"
+            - "jpholidayp/jpholidayp || talentio-notifier remind-resullt"
+          restartPolicy: Never
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: talentio-notifier-interview
+spec:
+  schedule: "*/10 * * * 1-5"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: talentio-notifier
+            image: pyama/talentio-notifier:0.0.1
+            env:
+            - name: TALENTIO_SKIP_STAGE
+              value: 3
+            - name: LANG
+              value: C.UTF-8
+            - name: TALENTIO_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: talentio-notifier-secret
+                  key: talentio-apikey
+            - name: LANG
+              value: C.UTF-8
+            - name: SLACK_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: talentio-notifier-secret
+                  key: slack-apikey
+            args:
+            - "/bin/bash"
+            - "-c"
+            - "jpholidayp/jpholidayp || talentio-notifier remind-interview"
+          restartPolicy: Never

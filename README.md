@@ -1,34 +1,44 @@
 # Talentio::Notifier
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/talentio/notifier`. To experiment with that code, run `bin/console` for an interactive prompt.
+TalentioのAPIを利用して、Slack通知を行うことができます。これにより採用選考をいい感じに進めていきましょう。
 
-TODO: Delete this and the text above, and describe your gem
+## 利用方法
 
-## Installation
+### 書類選考や面接結果のリマインド
 
-Add this line to your application's Gemfile:
+選考結果の記入が終わっていないユーザーに通知します。
 
-```ruby
-gem 'talentio-notifier'
+```
+$ talentio-notifier remind-result
 ```
 
-And then execute:
+### 面接時間のリマインド
 
-    $ bundle install
+面接の10分前にリマインドします。
 
-Or install it yourself as:
+```
+$ talentio-notifier remind-interview
+```
 
-    $ gem install talentio-notifier
 
-## Usage
+## 実行環境
 
-TODO: Write usage instructions here
+開発者の所属する企業ではk8sを利用して運用しています。manifestsについても `manifests` 配下のものを利用可能です。
 
-## Development
+## 環境変数
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+APIキーなどは環境変数で指定してください。
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+- SLACK_APIKEY
+slackのAPIキーを指定してください。
+- TALENTIO_APIKEY
+talentioのAPIキーを指定してください。
+- TALENTIO_SKIP_STAGE
+役員面接などはリマインドしたくないときに指定してください。デフォルト値は3で、開発者の所属する企業の場合は、4段階の先行があり、最終工程はリマインドしたくないため、3をデフォルトにしています。
+- TALENTIO_REMIND_INTERVAL
+インタビュー通知のcron間隔に合わせて秒で指定してください。デフォルトで600(10分)です。
+- TELENTIO_SLACK_CHANNEL
+トークで通知したことを通知するチャンネル指定です。デフォルトは `#recruiting` です。
 
 ## Contributing
 

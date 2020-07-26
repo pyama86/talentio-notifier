@@ -47,7 +47,7 @@ spec:
             image: pyama/talentio-notifier:0.0.1
             env:
             - name: TALENTIO_SKIP_STAGE
-              value: 3
+              value: "3"
             - name: LANG
               value: C.UTF-8
             - name: TALENTIO_APIKEY

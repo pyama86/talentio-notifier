@@ -1,4 +1,4 @@
-FROM ruby:latest
+FROM ruby:2.6.5
 WORKDIR /talentio-notifier
 ENV LANG C.UTF-8
 RUN apt update -qqy && apt install -qqy python git python-yaml

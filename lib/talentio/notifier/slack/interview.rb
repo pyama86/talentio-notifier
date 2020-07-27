@@ -12,8 +12,8 @@ module Talentio
           # 面接が行われていないものはスキップする
           return unless data[:scheduled_at]
 
-          base_time = DateTime.parse(data[:scheduled_at])
-          diff = base_time.to_i - DateTime.now.to_i
+          base_time = Time.parse(data[:scheduled_at])
+          diff = base_time.to_i - Time.now.to_i
 
           # 10分毎にcronで実行される想定
           if (diff < (ENV['TALENTIO_REMIND_INTERVAL'] || 600) && diff >= 0)

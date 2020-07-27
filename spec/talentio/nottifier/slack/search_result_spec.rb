@@ -11,7 +11,7 @@ RSpec.describe Talentio::Notifier::Slack::SelectionResult do
   describe '要件を満たしたので通知' do
     let(:data) {
       {
-        time: DateTime.parse("1986-04-10 10:00:00 +0900").to_s,
+        time: Time.parse("1986-04-10 10:00:00 +0900").to_s,
         id: 1,
         step: 1,
         type: "resume",
@@ -23,7 +23,7 @@ RSpec.describe Talentio::Notifier::Slack::SelectionResult do
             }
           }
         ],
-        scheduled_at: DateTime.parse("1986-04-10 10:00:00 +0900").to_s,
+        scheduled_at: Time.parse("1986-04-10 10:00:00 +0900").to_s,
         requisition_name: '書類選考',
         candidate_url: "https://example.com",
         slack_mentions: ["@example"]
@@ -47,7 +47,7 @@ RSpec.describe Talentio::Notifier::Slack::SelectionResult do
               },
               {
                 title: "納期",
-                value: "1986-04-14T10:00:00+09:00"
+                value: "1986-04-14 10:00:00 +0900"
               },
               {
                 title: "url",
@@ -102,7 +102,7 @@ RSpec.describe Talentio::Notifier::Slack::SelectionResult do
             }
           }
         ],
-        scheduled_at: DateTime.parse("1986-04-10 10:00:00 +0900").to_s,
+        scheduled_at: Time.parse("1986-04-10 10:00:00 +0900").to_s,
         requisition_name: '書類選考',
         candidate_url: "https://example.com",
         slack_mentions: ["@example"]
@@ -119,7 +119,7 @@ RSpec.describe Talentio::Notifier::Slack::SelectionResult do
   describe '日付が今日' do
     let(:data) {
       {
-        time: DateTime.now.to_s,
+        time: Time.now.to_s,
         id: 1,
         step: 1,
         type: "resume",
@@ -131,7 +131,7 @@ RSpec.describe Talentio::Notifier::Slack::SelectionResult do
             }
           }
         ],
-        scheduled_at: DateTime.parse("1986-04-10 10:00:00 +0900").to_s,
+        scheduled_at: Time.parse("1986-04-10 10:00:00 +0900").to_s,
         requisition_name: '書類選考',
         candidate_url: "https://example.com",
         slack_mentions: ["@example"]

@@ -16,16 +16,16 @@ module Talentio
           return unless data[param[:limit_key]]
 
           # 登録当日はスキップする
-          base_time = DateTime.parse(data[param[:limit_key]])
+          base_time = Time.parse(data[param[:limit_key]])
           return if base_time >= Date.today
 
           slack_mentions = client.mention_id_from_evaluations(data[:evaluations])
           slack_mentions.each do |m|
-            limit_day = base_time + param[:limit_day]
+            limit_day = base_time + param[:limit_day] * (60*60*24)
             # 納期を設定する
             loop do
               break if ![0, 6].include?(limit_day.wday) && !HolidayJp.holiday?(limit_day)
-              limit_day = limit_day + 1
+              limit_day = limit_day + (60*60*24)
             end
 
             # 個別の通知はトークで実行するので、共有チャンネルに動いたことを通知する

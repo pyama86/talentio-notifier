@@ -10,12 +10,12 @@ RSpec.describe Talentio::Notifier::Slack::Interview do
 
   describe '要件を満たしたので通知' do
     let(:base_time) {
-        DateTime.now + Rational(9, 24 * 60)
+        Time.now + Rational(9, 24 * 60)
     }
 
     let(:data) {
       {
-        time: DateTime.now,
+        time: Time.now,
         id: 1,
         step: 1,
         type: "interview",
@@ -89,12 +89,12 @@ RSpec.describe Talentio::Notifier::Slack::Interview do
 
   describe '過去日付なので通知しない' do
     let(:base_time) {
-        DateTime.now - 1
+        Time.now - 1
     }
 
     let(:data) {
       {
-        time: DateTime.now,
+        time: Time.now,
         id: 1,
         step: 1,
         type: "interview",

@@ -1,7 +1,7 @@
 require 'time'
 require 'json'
 require 'pp'
-require 'slack'
+require 'slack-ruby-client'
 require 'holiday_jp'
 require 'active_support/core_ext/module'
 module Talentio

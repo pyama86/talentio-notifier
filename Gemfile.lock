@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    talentio-notifier (0.1.0)
+    talentio-notifier (0.3.1)
+      activesupport
       faraday
       holiday_jp
       slack-api

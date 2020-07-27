@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'slack-api'
   spec.add_dependency 'slack-ruby-client'
   spec.add_dependency "holiday_jp"
+  spec.add_dependency "activesupport"
 end

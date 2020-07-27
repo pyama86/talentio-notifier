@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
           - name: talentio-notifier
-            image: pyama/talentio-notifier:0.3.4
+            image: pyama/talentio-notifier:0.3.5
             imagePullPolicy: Always
             env:
             - name: LANG
@@ -45,7 +45,7 @@ spec:
         spec:
           containers:
           - name: talentio-notifier
-            image: pyama/talentio-notifier:0.3.4
+            image: pyama/talentio-notifier:0.3.5
             env:
             - name: TALENTIO_SKIP_STAGE
               value: "3"

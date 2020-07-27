@@ -17,7 +17,7 @@ module Talentio
 
           # 登録当日はスキップする
           base_time = Time.parse(data[param[:limit_key]])
-          return if base_time >= Date.today
+          return if base_time >= Date.today.to_time
 
           slack_mentions = client.mention_id_from_evaluations(data[:evaluations])
           slack_mentions.each do |m|

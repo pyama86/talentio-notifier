@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: talentio-notifier-result
 spec:
-  schedule: "38 11,15 * * 1-5"
+  schedule: "0 11,15 * * 1-5"
   jobTemplate:
     spec:
       template:

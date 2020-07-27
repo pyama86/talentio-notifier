@@ -3,6 +3,7 @@ require 'json'
 require 'pp'
 require 'slack'
 require 'holiday_jp'
+require 'forwardable'
 module Talentio
   module Notifier
     class Slack

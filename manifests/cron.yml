@@ -3,14 +3,15 @@ kind: CronJob
 metadata:
   name: talentio-notifier-result
 spec:
-  schedule: "0 11,15 * * 1-5"
+  schedule: "0 11,15 18 * 1-5"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
           - name: talentio-notifier
-            image: pyama/talentio-notifier:0.3.2
+            image: pyama/talentio-notifier:0.3.3
+            imagePullPolicy: Always
             env:
             - name: LANG
               value: C.UTF-8
@@ -44,7 +45,7 @@ spec:
         spec:
           containers:
           - name: talentio-notifier
-            image: pyama/talentio-notifier:0.3.2
+            image: pyama/talentio-notifier:0.3.3
             env:
             - name: TALENTIO_SKIP_STAGE
               value: "3"

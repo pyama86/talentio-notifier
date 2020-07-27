@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
           - name: talentio-notifier
-            image: pyama/talentio-notifier:0.3.1
+            image: pyama/talentio-notifier:0.3.2
             env:
             - name: LANG
               value: C.UTF-8
@@ -44,7 +44,7 @@ spec:
         spec:
           containers:
           - name: talentio-notifier
-            image: pyama/talentio-notifier:0.3.1
+            image: pyama/talentio-notifier:0.3.2
             env:
             - name: TALENTIO_SKIP_STAGE
               value: "3"

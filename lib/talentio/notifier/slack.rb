@@ -46,6 +46,25 @@ module Talentio
             conf.token = ENV['SLACK_APIKEY']
           end
           @client = ::Slack::Web::Client.new
+              @client.chat_postMessage(
+                channel: "U03Q3PPSX",
+                as_user: false,
+                text: "2020/07/27 15:00からの面接よろしくお願いします！！１",
+                attachments: [{
+                  fields: [
+                    {
+                      title: '区分',
+                      value: "圧倒的P山採用"
+                    },
+                    {
+                      title: 'url',
+                      value: "dummy" 
+                    }
+                  ],
+                  color: 'warning'
+                }]
+              )
+
            if ENV['TALENTIO_TEST']
              @client.define_singleton_method(:chat_postMessage) do |m|
                puts m

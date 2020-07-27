@@ -25,6 +25,14 @@ $ talentio-notifier remind-interview
 
 開発者の所属する企業ではk8sを利用して運用しています。manifestsについても `manifests` 配下のものを利用可能です。
 
+### apply
+```bash
+$ kubectl create secret generic talentio-notifier-secret \
+--from-literal=talentio-apikey=$TALENTIO_APIKEY \
+--from-literal=slack-apikey=$SLACK_APIKEY
+$ kubectl apply -f manifests/cron.yml
+```
+
 ## 環境変数
 
 APIキーなどは環境変数で指定してください。

@@ -1,4 +1,4 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: talentio-notifier-result
@@ -10,6 +10,13 @@ spec:
         spec:
           containers:
           - name: talentio-notifier
+            resources:
+              requests:
+                cpu: 50m
+                memory: 256M
+              limits:
+                cpu: 200m
+                memory: 512M
             image: pyama/talentio-notifier:0.3.5
             imagePullPolicy: Always
             env:
@@ -20,8 +27,6 @@ spec:
                 secretKeyRef:
                   name: talentio-notifier-secret
                   key: talentio-apikey
-            - name: LANG
-              value: C.UTF-8
             - name: SLACK_APIKEY
               valueFrom:
                 secretKeyRef:
@@ -33,7 +38,7 @@ spec:
             - "jpholidayp/jpholidayp || talentio-notifier remind-result"
           restartPolicy: Never
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: talentio-notifier-interview
@@ -46,6 +51,13 @@ spec:
           containers:
           - name: talentio-notifier
             image: pyama/talentio-notifier:0.3.5
+            resources:
+              requests:
+                cpu: 50m
+                memory: 256M
+              limits:
+                cpu: 200m
+                memory: 512M
             env:
             - name: TALENTIO_SKIP_STAGE
               value: "3"
@@ -56,8 +68,6 @@ spec:
                 secretKeyRef:
                   name: talentio-notifier-secret
                   key: talentio-apikey
-            - name: LANG
-              value: C.UTF-8
             - name: SLACK_APIKEY
               valueFrom:
                 secretKeyRef:

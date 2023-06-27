@@ -1,6 +1,5 @@
 require 'time'
 require 'json'
-require 'pp'
 require 'slack-ruby-client'
 require 'holiday_jp'
 require 'active_support/core_ext/module'
@@ -14,24 +13,27 @@ module Talentio
 
       def nofity
         return unless notify?
-
       end
 
       def mention_id_from_evaluations(evaluations)
         members.map do |sm|
-          evaluations.select {|e| !e['finished']}.map do |m|
-            { id: "@#{sm['id']}", name: sm['name'] } if sm['real_name'] =~ /#{m["employee"]['lastName']}/ && sm['real_name'] =~ /#{m["employee"]['firstName']}/
+          evaluations.select { |e| !e['finished'] }.map do |m|
+            next unless sm['email'] == m['email']
+
+            { id: "@#{sm['id']}",
+              name: sm['name'] }
           end
         end.flatten.compact
       end
 
       private
+
       def members
         unless @members
           members = []
           next_cursor = nil
           loop do
-            slack_users = client.users_list({limit: 1000, cursor: next_cursor})
+            slack_users = client.users_list({ limit: 1000, cursor: next_cursor })
             members << slack_users['members']
             next_cursor = slack_users['response_metadata']['next_cursor']
             break if next_cursor.empty?
@@ -47,11 +49,11 @@ module Talentio
             conf.token = ENV['SLACK_APIKEY']
           end
           @client = ::Slack::Web::Client.new
-           if ENV['TALENTIO_TEST']
-             @client.define_singleton_method(:chat_postMessage) do |m|
-               puts m
-             end
-           end
+          if ENV['TALENTIO_TEST']
+            @client.define_singleton_method(:chat_postMessage) do |m|
+              puts m
+            end
+          end
         end
 
         @client

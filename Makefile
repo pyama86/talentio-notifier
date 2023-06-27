@@ -1,6 +1,6 @@
 VERSION=0.3.6
 build:
-	docker build -t talentio-notifier .
+	docker build --platform linux/amd64 -t talentio-notifier .
 
 push: build
 	docker tag talentio-notifier  pyama/talentio-notifier:$(VERSION)

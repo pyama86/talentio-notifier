@@ -1,9 +1,11 @@
-FROM ruby:2.6.5
+FROM ruby:latest
 WORKDIR /talentio-notifier
 ENV LANG C.UTF-8
-RUN apt update -qqy && apt install -qqy python git python-yaml
+RUN apt update -qqy && apt upgrade -qqy && \
+  apt update -qqy && apt install -qqy python3 git python3-yaml && \
+  apt clean && rm -rf /var/lib/apt/lists/*
 RUN useradd talentio && chown talentio /talentio-notifier
 USER talentio
 
 RUN git clone https://github.com/emasaka/jpholidayp.git
-RUN gem install talentio-notifier -v "0.3.5"
+RUN gem install talentio-notifier -v "0.3.6"

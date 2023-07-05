@@ -17,7 +17,7 @@ spec:
               limits:
                 cpu: 200m
                 memory: 512M
-            image: pyama/talentio-notifier:0.3.7
+            image: pyama/talentio-notifier:latest
             imagePullPolicy: Always
             env:
             - name: LANG
@@ -35,7 +35,7 @@ spec:
             args:
             - "/bin/bash"
             - "-c"
-            - "holiday_jp-go || talentio-notifier remind-result"
+            - "holiday_jp-go || bundle exec bin/talentio-notifier remind-result"
           restartPolicy: Never
 ---
 apiVersion: batch/v1
@@ -50,7 +50,7 @@ spec:
         spec:
           containers:
           - name: talentio-notifier
-            image: pyama/talentio-notifier:0.3.7
+            image: pyama/talentio-notifier:latest
             resources:
               requests:
                 cpu: 50m
@@ -76,5 +76,5 @@ spec:
             args:
             - "/bin/bash"
             - "-c"
-            - "holiday_jp-go || talentio-notifier remind-interview"
+            - "holiday_jp-go || bundle exec bin/talentio-notifier remind-interview"
           restartPolicy: Never

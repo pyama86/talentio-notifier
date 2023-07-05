@@ -1,0 +1,8 @@
+.git
+manifests
+pkg
+spec
+Dockerfile
+Makefile
+Rakefile
+.env

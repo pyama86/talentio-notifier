@@ -9,5 +9,6 @@ RUN apt update -qqy && apt upgrade -qqy && \
 RUN useradd talentio && \
   chown talentio /talentio-notifier
 USER talentio
-
-RUN gem install talentio-notifier -v "0.3.7"
+COPY . /talentio-notifier
+RUN bundle install
+CMD ["bundle", "exec", "bin/talentio-notifier"]

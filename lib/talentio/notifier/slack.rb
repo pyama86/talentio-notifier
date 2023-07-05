@@ -18,7 +18,7 @@ module Talentio
       def mention_id_from_evaluations(evaluations)
         members.map do |sm|
           evaluations.select { |e| !e['finished'] }.map do |m|
-            next unless sm['email'] == m['email']
+            next unless sm['email'] != m['email']
 
             { id: "@#{sm['id']}",
               name: sm['name'] }

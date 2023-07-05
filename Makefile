@@ -1,4 +1,4 @@
-VERSION=0.3.6
+VERSION=0.3.7
 build:
 	docker build --platform linux/amd64 -t talentio-notifier .
 

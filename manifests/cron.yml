@@ -35,7 +35,7 @@ spec:
             args:
             - "/bin/bash"
             - "-c"
-            - "jpholidayp/jpholidayp || talentio-notifier remind-result"
+            - "holiday_jp-go || talentio-notifier remind-result"
           restartPolicy: Never
 ---
 apiVersion: batch/v1
@@ -76,5 +76,5 @@ spec:
             args:
             - "/bin/bash"
             - "-c"
-            - "jpholidayp/jpholidayp || talentio-notifier remind-interview"
+            - "holiday_jp-go || talentio-notifier remind-interview"
           restartPolicy: Never

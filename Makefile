@@ -1,4 +1,4 @@
-VERSION=0.3.7
+VERSION=$(shell git describe --tags --always --dirty)
 build:
 	docker build --platform linux/amd64 -t talentio-notifier .
 

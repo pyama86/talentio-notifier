@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    talentio-notifier (0.3.8)
+    talentio-notifier (0.3.9)
       activesupport
       faraday
       holiday_jp

@@ -10,4 +10,4 @@ RUN useradd talentio && \
   chown talentio /talentio-notifier
 USER talentio
 
-RUN gem install talentio-notifier -v "0.3.6"
+RUN gem install talentio-notifier -v "0.3.7"

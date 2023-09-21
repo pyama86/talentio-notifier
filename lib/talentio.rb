@@ -7,6 +7,7 @@ require 'talentio/notifier/slack/selection_result'
 require 'uri'
 require 'openai'
 require 'date'
+require 'logger'
 module Talentio
   class << self
     def candidates
@@ -31,6 +32,10 @@ module Talentio
           candidate_url: URI.join(url, "ats/candidate/#{c['id']}").to_s
         }
       end.flatten.compact
+    end
+
+    def logger
+      @logger ||= Logger.new(STDOUT)
     end
 
     def url

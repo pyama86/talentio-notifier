@@ -13,6 +13,7 @@ module Talentio
           channel_message = []
           param = selection_types[data[:type].to_sym]
 
+          Talentio.logger.info("todays ai message is #{Talentio::Notifier::AI.ai_message}")
           return unless param
           # 納期の計算対象となる日付が登録されていないものはスキップする
           return unless data[param[:limit_key]]

@@ -32,6 +32,11 @@ spec:
                 secretKeyRef:
                   name: talentio-notifier-secret
                   key: slack-apikey
+            - name: OPENAI_API_KEY_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: talentio-notifier-secret
+                  key: openai-apikey
             args:
             - "/bin/bash"
             - "-c"
@@ -73,6 +78,11 @@ spec:
                 secretKeyRef:
                   name: talentio-notifier-secret
                   key: slack-apikey
+            - name: OPENAI_API_KEY_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: talentio-notifier-secret
+                  key: openai-apikey
             args:
             - "/bin/bash"
             - "-c"

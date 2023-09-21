@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport'
   spec.add_dependency 'faraday'
   spec.add_dependency 'holiday_jp'
+  spec.add_dependency 'ruby-openai'
   spec.add_dependency 'slack-ruby-client'
   spec.add_dependency 'thor'
 end

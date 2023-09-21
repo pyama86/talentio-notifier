@@ -1,10 +1,12 @@
 require 'talentio'
 require 'talentio/client'
+require 'talentio/notifier/ai'
 require 'talentio/notifier/slack'
 require 'talentio/notifier/slack/interview'
 require 'talentio/notifier/slack/selection_result'
 require 'uri'
-
+require 'openai'
+require 'date'
 module Talentio
   class << self
     def candidates
@@ -32,10 +34,11 @@ module Talentio
     end
 
     def url
-      ENV['TALENTIO_URL'] || "https://talentio.com"
+      ENV['TALENTIO_URL'] || 'https://talentio.com'
     end
 
     private
+
     def client
       @client ||= Client.new
     end

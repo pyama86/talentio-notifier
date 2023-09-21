@@ -5,20 +5,23 @@ PATH
       activesupport
       faraday
       holiday_jp
+      ruby-openai
       slack-ruby-client
       thor
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.6)
+    activesupport (7.0.8)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    base64 (0.1.1)
     concurrent-ruby (1.2.2)
     diff-lcs (1.5.0)
-    faraday (2.7.9)
+    faraday (2.7.11)
+      base64
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-mashify (0.1.1)
@@ -27,12 +30,12 @@ GEM
     faraday-multipart (1.0.4)
       multipart-post (~> 2)
     faraday-net_http (3.0.2)
-    gli (2.21.0)
+    gli (2.21.1)
     hashie (5.0.0)
     holiday_jp (0.8.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    minitest (5.18.1)
+    minitest (5.20.0)
     multipart-post (2.3.0)
     rake (12.3.3)
     rspec (3.12.0)
@@ -48,8 +51,11 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.1)
+    ruby-openai (5.1.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby2_keywords (0.0.5)
-    slack-ruby-client (2.1.0)
+    slack-ruby-client (2.2.0)
       faraday (>= 2.0)
       faraday-mashify
       faraday-multipart

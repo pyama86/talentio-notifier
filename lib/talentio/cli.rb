@@ -13,7 +13,7 @@ module Talentio
 
     desc 'remind-result', 'remind selection result'
     def remind_result
-      result = Notifier::Slack::SelectionResult.new(Notifier::Slack.new)
+      result = Notifier::Slack::SelectionResult.new(Talentio::Notifier::Slack.new)
       Talentio.candidates.each do |c|
         result.notify(c)
       end

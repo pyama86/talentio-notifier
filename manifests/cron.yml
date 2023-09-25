@@ -32,7 +32,7 @@ spec:
                 secretKeyRef:
                   name: talentio-notifier-secret
                   key: slack-apikey
-            - name: OPENAI_API_KEY_APIKEY
+            - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: talentio-notifier-secret
@@ -79,7 +79,7 @@ spec:
                 secretKeyRef:
                   name: talentio-notifier-secret
                   key: slack-apikey
-            - name: OPENAI_API_KEY_APIKEY
+            - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: talentio-notifier-secret

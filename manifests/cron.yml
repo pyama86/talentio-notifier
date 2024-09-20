@@ -17,7 +17,7 @@ spec:
               limits:
                 cpu: 200m
                 memory: 512M
-            image: pyama/talentio-notifier:0.3.11-3-g03b5df9
+            image: pyama/talentio-notifier:0.3.11-7-g03b5df9
             imagePullPolicy: Always
             env:
             - name: LANG
@@ -55,7 +55,7 @@ spec:
         spec:
           containers:
           - name: talentio-notifier
-            image: pyama/talentio-notifier:0.3.11-3-g03b5df9
+            image: pyama/talentio-notifier:0.3.11-7-g03b5df9
             imagePullPolicy: Always
             resources:
               requests:

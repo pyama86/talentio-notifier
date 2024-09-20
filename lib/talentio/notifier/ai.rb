@@ -8,7 +8,7 @@ module Talentio
           unless @ai_message
             response = openai.chat(
               parameters: {
-                model: 'gpt-4',
+                model: 'gpt-4o',
                 messages: [{ role: 'user', content: <<~EOS
                   面接の結果を促す文章を考えてください。
                   あなたに作成していただいたメッセージはSlackで送信するので返信に件名は不要です。
